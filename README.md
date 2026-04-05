@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Anuj Bansal — Personal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive 3D portfolio website showcasing my work in **Data Science**, **Machine Learning**, **Data Analytics**, and **Business Intelligence**.
 
-## Available Scripts
+Built with React, TypeScript, and Three.js — featuring a 3D animated character, physics-based tech stack visualization, scroll-driven animations, and dynamically generated project previews.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Layer | Technologies |
+|-------|-------------|
+| **Framework** | React 18, TypeScript, Vite |
+| **3D Engine** | Three.js, React Three Fiber, Drei |
+| **Physics** | Rapier (via @react-three/rapier) |
+| **Animation** | GSAP (ScrollSmoother, SplitText, ScrollTrigger) |
+| **Post-processing** | @react-three/postprocessing (N8AO) |
+| **Styling** | CSS with custom design system (Geist font) |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **3D Character Model** — Encrypted GLTF model with DRACO compression, mouse-tracking head rotation, and scroll-driven pose transitions
+- **Physics Tech Spheres** — 30 interactive spheres with canvas-generated textures representing data science tools (Python, PyTorch, TensorFlow, Pandas, etc.)
+- **Scroll Animations** — Full-page scroll-driven camera movements, section transitions, and text reveals using GSAP ScrollTrigger
+- **Role Cycling** — Animated role text cycling through Data Scientist, ML Engineer, Data Analyst, and Business Analyst
+- **Project Carousel** — 8 projects with programmatically generated canvas visualizations (heatmaps, charts, scatter plots, network diagrams)
+- **Custom Cursor** — Mix-blend-mode cursor with hover effects
+- **Responsive Design** — Adapts from mobile to ultrawide displays
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Projects Featured
 
-### `npm run build`
+| # | Project | Category | Key Tools | Status |
+|---|---------|----------|-----------|--------|
+| 01 | **AFM Z-Height Map Prediction** | Deep Learning / Research | PyTorch, CNN, ResNet18, Attention U-Net | Completed |
+| 02 | **Customer Churn Predictor** | ML / Explainability | XGBoost, SHAP, Streamlit, Pandas | Completed |
+| 03 | **Zomato Rating Predictor** | Machine Learning | Flask, Scikit-learn, Feature Engineering | Completed |
+| 04 | **YouTube Channel Analytics** | Regression Analysis | Matplotlib, Statistical Modeling | Completed |
+| 05 | **Sustainable Fashion Viz** | Data Visualization | D3.js, Tableau, JavaScript | Completed |
+| 06 | **Disease Risk Prediction** | Healthcare / Predictive Analytics | Sklearn, Streamlit, SHAP | Coming Soon |
+| 07 | **Research Paper Summarizer & Job Match Agent** | AI Agents / NLP | LangChain, OpenAI API, Streamlit | Coming Soon |
+| 08 | **Financial Fraud Detection** | Anomaly Detection / Deep Learning | Isolation Forest, Autoencoder, Plotly | Coming Soon |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js 18+
+- npm 9+
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/99anujb/portfolio.git
+cd portfolio
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run dev        # Start dev server at http://localhost:5173
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Production Build
 
-## Learn More
+```bash
+npm run build      # TypeScript check + Vite production build
+npm run preview    # Preview the production build locally
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Linting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run lint       # Run ESLint
+```
 
-### Code Splitting
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+├── main.tsx                     # Entry point
+├── App.tsx                      # Root (lazy loads Character + MainContainer)
+├── context/
+│   └── LoadingProvider.tsx       # Loading state context
+├── components/
+│   ├── Landing.tsx               # Hero — name + cycling roles
+│   ├── About.tsx                 # About me section
+│   ├── WhatIDo.tsx               # Skills cards (Data Science & ML / Analytics & Viz)
+│   ├── TechStack.tsx             # 3D physics tech spheres (R3F + Rapier)
+│   ├── Career.tsx                # Career timeline
+│   ├── Work.tsx                  # Project carousel with canvas visualizations
+│   ├── Contact.tsx               # Contact + footer
+│   ├── Navbar.tsx                # Navigation (GSAP ScrollSmoother)
+│   ├── Character/                # 3D character model system
+│   │   ├── Scene.tsx             # Three.js scene, camera, renderer
+│   │   └── utils/                # Model loading, animations, lighting
+│   └── utils/
+│       ├── initialFX.ts          # Page load animations
+│       ├── splitText.ts          # Scroll-triggered text animations
+│       └── GsapScroll.ts         # Character + section scroll timelines
+└── styles/                       # Per-component CSS files
+```
 
-### Analyzing the Bundle Size
+## Design System
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Token | Value |
+|-------|-------|
+| **Accent** | `#5eead4` (teal) |
+| **Background** | `#0a0e17` (dark navy) |
+| **Font** | Geist (Google Fonts) |
+| **Cursor** | Custom with `mix-blend-mode: difference` |
 
-### Making a Progressive Web App
+## Credits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Portfolio design based on [akashrmalhotra/3d-portfolio](https://github.com/akashrmalhotra/3d-portfolio).
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Anuj Bansal** — Data Scientist & ML Engineer
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[GitHub](https://github.com/99anujb) · [LinkedIn](https://linkedin.com/in/anuj-bansal-854772189) · [Email](mailto:99anujbansal@gmail.com)
