@@ -69,3 +69,46 @@
     line-height: 2.7rem;
   }
 }
+
+.about-metrics {
+  display: flex;
+  gap: 50px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.about-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-metric-value {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--accentColor);
+  line-height: 1;
+}
+
+.about-metric-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #adacac;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-metrics {
+    gap: 30px;
+  }
+
+  .about-metric-value {
+    font-size: 36px;
+  }
+
+  .about-metric-label {
+    font-size: 12px;
+  }
+}

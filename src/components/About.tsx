@@ -1,5 +1,12 @@
 import "./styles/About.css";
 
+const metrics = [
+  { value: "4+", label: "Years Experience" },
+  { value: "10", label: "Projects" },
+  { value: "16+", label: "Technologies" },
+  { value: "1", label: "Award" },
+];
+
 const About = () => {
   return (
     <div className="about-section" id="about">
@@ -14,6 +21,14 @@ const About = () => {
           and interactive data applications that bridge the gap between complex
           models and real-world impact.
         </p>
+        <div className="about-metrics">
+          {metrics.map((m, i) => (
+            <div className="about-metric" key={i}>
+              <span className="about-metric-value">{m.value}</span>
+              <span className="about-metric-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
