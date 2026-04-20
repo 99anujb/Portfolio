@@ -36,7 +36,6 @@ function createTechTexture(name: string, brandColor: string): THREE.CanvasTextur
   canvas.height = 512;
   const ctx = canvas.getContext("2d")!;
 
-  // Dark gradient background
   const gradient = ctx.createRadialGradient(256, 256, 0, 256, 256, 256);
   gradient.addColorStop(0, brandColor);
   gradient.addColorStop(1, "#0a0e17");
@@ -45,7 +44,6 @@ function createTechTexture(name: string, brandColor: string): THREE.CanvasTextur
   ctx.arc(256, 256, 256, 0, Math.PI * 2);
   ctx.fill();
 
-  // Inner glow ring
   ctx.strokeStyle = brandColor;
   ctx.lineWidth = 3;
   ctx.globalAlpha = 0.4;
@@ -54,7 +52,6 @@ function createTechTexture(name: string, brandColor: string): THREE.CanvasTextur
   ctx.stroke();
   ctx.globalAlpha = 1;
 
-  // Text
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
@@ -66,17 +63,10 @@ function createTechTexture(name: string, brandColor: string): THREE.CanvasTextur
   ctx.fillText(name, 256, 256);
   ctx.shadowBlur = 0;
 
-  const texture = new THREE.CanvasTexture(canvas);
-  return texture;
+  return new THREE.CanvasTexture(canvas);
 }
 
-const textures = techItems.map((item) => createTechTexture(item.name, item.color));
-
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-
-const spheres = [...Array(30)].map(() => ({
-  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
-}));
 
 type SphereProps = {
   vec?: THREE.Vector3;
@@ -96,10 +86,10 @@ function SphereGeo({
   const api = useRef<RapierRigidBody | null>(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
+    if (!isActive || !api.current) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
-      .copy(api.current!.translation())
+      .copy(api.current.translation())
       .normalize()
       .multiply(
         new THREE.Vector3(
@@ -108,8 +98,7 @@ function SphereGeo({
           -50 * delta * scale
         )
       );
-
-    api.current?.applyImpulse(impulse, true);
+    api.current.applyImpulse(impulse, true);
   });
 
   return (
@@ -174,31 +163,56 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
+  const isMobile = window.innerWidth < 768;
+  const sphereCount = isMobile ? 12 : 30;
+
+  const spheres = useMemo(
+    () =>
+      [...Array(sphereCount)].map(() => ({
+        scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+      })),
+    [sphereCount]
+  );
+
+  // IntersectionObserver for lazy mount
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll-based activation (no setInterval hack)
+  useEffect(() => {
+    if (!isVisible) return;
     const handleScroll = () => {
+      const workEl = document.getElementById("work");
+      if (!workEl) return;
+      const threshold = workEl.getBoundingClientRect().top;
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isVisible]);
+
+  const textures = useMemo(
+    () => techItems.map((item) => createTechTexture(item.name, item.color)),
+    []
+  );
 
   const materials = useMemo(() => {
     return textures.map(
@@ -213,49 +227,57 @@ const TechStack = () => {
           clearcoat: 0.1,
         })
     );
-  }, []);
+  }, [textures]);
 
   return (
-    <div className="techstack">
+    <div className="techstack" ref={sectionRef}>
       <h2> My Techstack</h2>
 
-      <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
-        className="tech-canvas"
-      >
-        <ambientLight intensity={1} />
-        <spotLight
-          position={[20, 20, 25]}
-          penumbra={1}
-          angle={0.2}
-          color="white"
-          castShadow
-          shadow-mapSize={[512, 512]}
-        />
-        <directionalLight position={[0, 5, -4]} intensity={2} />
-        <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              {...props}
-              material={materials[i % materials.length]}
-              isActive={isActive}
-            />
-          ))}
-        </Physics>
-        <Environment
-          files="/models/char_enviorment.hdr"
-          environmentIntensity={0.5}
-          environmentRotation={[0, 4, 2]}
-        />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
-      </Canvas>
+      {isVisible && (
+        <Canvas
+          shadows
+          gl={{
+            alpha: true,
+            stencil: false,
+            depth: false,
+            antialias: false,
+          }}
+          dpr={Math.min(window.devicePixelRatio, 2)}
+          camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+          onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
+          className="tech-canvas"
+        >
+          <ambientLight intensity={1} />
+          <spotLight
+            position={[20, 20, 25]}
+            penumbra={1}
+            angle={0.2}
+            color="white"
+            castShadow
+            shadow-mapSize={[512, 512]}
+          />
+          <directionalLight position={[0, 5, -4]} intensity={2} />
+          <Physics gravity={[0, 0, 0]}>
+            <Pointer isActive={isActive} />
+            {spheres.map((props, i) => (
+              <SphereGeo
+                key={i}
+                {...props}
+                material={materials[i % materials.length]}
+                isActive={isActive}
+              />
+            ))}
+          </Physics>
+          <Environment
+            files="/models/char_enviorment.hdr"
+            environmentIntensity={0.5}
+            environmentRotation={[0, 4, 2]}
+          />
+          <EffectComposer enableNormalPass={false}>
+            <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+          </EffectComposer>
+        </Canvas>
+      )}
     </div>
   );
 };
