@@ -197,7 +197,7 @@ const projects: Project[] = [
     category: "Healthcare / Predictive Analytics",
     domainTags: ["Machine Learning", "Healthcare", "Data Science"],
     tools: ["scikit-learn", "XGBoost", "SHAP", "Streamlit"],
-    status: "In Progress",
+    status: "Completed",
     shortDescription:
       "Healthcare predictive analytics tool for disease risk scoring using XGBoost and SHAP explainability, with a Streamlit interface for clinical decision support.",
     caseStudyHighlights: [
