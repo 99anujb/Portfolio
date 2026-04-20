@@ -15,6 +15,8 @@ interface Project {
   caseStudyHighlights: string[];
   award?: string;
   canvasVisualizationType: string;
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 const projects: Project[] = [
@@ -44,6 +46,7 @@ const projects: Project[] = [
     award:
       "3rd Place, Graduate Poster, ASEE Northeast Section Annual Conference 2026",
     canvasVisualizationType: "heatmap",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 2,
@@ -71,6 +74,7 @@ const projects: Project[] = [
       "Deployed a production Streamlit + Plotly dashboard with 3D scatter plots, radar charts, and survival curves.",
     ],
     canvasVisualizationType: "bar-chart",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 3,
@@ -96,6 +100,7 @@ const projects: Project[] = [
       "Deployed Streamlit dashboard with candlestick charts, SMA overlays, RSI gauges, and backtest visualizations.",
     ],
     canvasVisualizationType: "candlestick",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 4,
@@ -120,6 +125,7 @@ const projects: Project[] = [
       "Added interactive preference-based interface letting users specify mood, tempo, danceability, era, and style.",
     ],
     canvasVisualizationType: "waveform",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 5,
@@ -138,6 +144,7 @@ const projects: Project[] = [
       "Included full design documentation (HLD, LLD, Architecture, Wireframes).",
     ],
     canvasVisualizationType: "distribution",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 6,
@@ -157,6 +164,7 @@ const projects: Project[] = [
       "Built with zero build tools \u2014 pure D3 v7, TopoJSON v3, and vanilla JavaScript.",
     ],
     canvasVisualizationType: "bubble-chart",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 7,
@@ -181,6 +189,7 @@ const projects: Project[] = [
       "Loaded JSON data via d3.json() and rendered via D3 data binding (selectAll \u2192 data \u2192 enter \u2192 append).",
     ],
     canvasVisualizationType: "document-grid",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 8,
@@ -197,6 +206,7 @@ const projects: Project[] = [
       "Multi-disease prediction capability.",
     ],
     canvasVisualizationType: "scatter-boundary",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 9,
@@ -213,6 +223,7 @@ const projects: Project[] = [
       "Resume-to-job matching using semantic similarity.",
     ],
     canvasVisualizationType: "network-flow",
+    githubUrl: "https://github.com/99anujb",
   },
   {
     id: 10,
@@ -229,6 +240,7 @@ const projects: Project[] = [
       "Interactive Plotly visualizations for anomaly exploration.",
     ],
     canvasVisualizationType: "anomaly-scatter",
+    githubUrl: "https://github.com/99anujb",
   },
 ];
 
@@ -758,6 +770,43 @@ const Work = () => {
     goToSlide(newIndex);
   }, [currentIndex, filteredProjects.length, goToSlide]);
 
+  // Touch swipe state
+  const pointerStart = useRef<{ x: number; y: number } | null>(null);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    pointerStart.current = { x: e.clientX, y: e.clientY };
+  }, []);
+
+  const handlePointerUp = useCallback(
+    (e: React.PointerEvent) => {
+      if (!pointerStart.current) return;
+      const deltaX = e.clientX - pointerStart.current.x;
+      const deltaY = e.clientY - pointerStart.current.y;
+      pointerStart.current = null;
+
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) goToNext();
+        else goToPrev();
+      }
+    },
+    [goToNext, goToPrev]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const workEl = document.getElementById("work");
+      if (!workEl) return;
+      const rect = workEl.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+
+      if (e.key === "ArrowLeft") goToPrev();
+      if (e.key === "ArrowRight") goToNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goToPrev, goToNext]);
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -778,7 +827,7 @@ const Work = () => {
           ))}
         </div>
 
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper" role="region" aria-roledescription="carousel" aria-label="Project showcase">
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}
@@ -796,7 +845,11 @@ const Work = () => {
             <MdArrowForward />
           </button>
 
-          <div className="carousel-track-container">
+          <div
+            className="carousel-track-container"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+          >
             <div
               className="carousel-track"
               style={{
@@ -804,7 +857,7 @@ const Work = () => {
               }}
             >
               {filteredProjects.map((project) => (
-                <div className="carousel-slide" key={project.id}>
+                <div className="carousel-slide" key={project.id} role="group" aria-roledescription="slide" aria-label={`Project ${project.id}: ${project.title}`}>
                   <div className="carousel-content">
                     <div
                       className="carousel-info"
@@ -843,6 +896,34 @@ const Work = () => {
                             View Case Study &rarr;
                           </span>
                         </div>
+                        {(project.githubUrl || project.liveUrl) && (
+                          <div className="carousel-links">
+                            {project.githubUrl && (
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-cursor="disable"
+                                onClick={(e) => e.stopPropagation()}
+                                className="carousel-link"
+                              >
+                                GitHub ↗
+                              </a>
+                            )}
+                            {project.liveUrl && (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-cursor="disable"
+                                onClick={(e) => e.stopPropagation()}
+                                className="carousel-link"
+                              >
+                                Live Demo ↗
+                              </a>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">

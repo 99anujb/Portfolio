@@ -627,3 +627,24 @@
     padding-right: 30px;
   }
 }
+
+.carousel-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.carousel-link {
+  font-size: 13px;
+  color: var(--accentColor);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  padding: 4px 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.carousel-link:hover {
+  background: rgba(94, 234, 212, 0.12);
+  border-color: var(--accentColor);
+}
