@@ -135,3 +135,35 @@ body {
     font-size: 40px;
   }
 }
+
+/* Skip to content link */
+.skip-nav {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--accentColor);
+  color: #0a0e17;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-nav:focus {
+  top: 0;
+}
+
+/* Global focus-visible */
+*:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 2px;
+}

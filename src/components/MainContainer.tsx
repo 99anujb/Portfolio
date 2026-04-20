@@ -31,6 +31,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
+      <a href="#about" className="skip-nav">Skip to content</a>
       <Cursor />
       <Navbar />
       <SocialIcons />
