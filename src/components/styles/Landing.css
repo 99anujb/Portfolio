@@ -198,8 +198,7 @@
 
 .landing-info {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  left: 0;
   bottom: 40px;
   top: inherit;
   z-index: 9;
@@ -232,15 +231,15 @@
 
 h2.landing-info-h2 {
   color: #14b8a6;
-  font-size: 42px;
-  width: 120%;
+  font-size: 26px;
   margin: 0;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   position: relative;
   margin-left: -5px;
   z-index: 2;
-  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.15;
 }
 
 .landing-h2-2,
@@ -303,7 +302,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 38px;
+    font-size: 32px;
   }
 }
 
@@ -331,7 +330,7 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 55px;
+    font-size: 40px;
   }
 }
 
@@ -363,6 +362,11 @@ h2.landing-info-h2 {
     transform: translate(0%, -50%);
     right: auto;
     left: 66%;
+  }
+
+  h2.landing-info-h2 {
+    font-size: 55px;
+    line-height: 64px;
   }
 }
 
@@ -406,5 +410,27 @@ h2.landing-info-h2 {
 
   h2.landing-info-h2 {
     font-size: 75px;
+    line-height: 86px;
   }
+}
+
+.landing-cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 12px 32px;
+  border: 1px solid var(--accentColor);
+  border-radius: 30px;
+  color: var(--accentColor);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Geist", sans-serif;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.landing-cta:hover {
+  background: rgba(94, 234, 212, 0.12);
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.15);
 }
