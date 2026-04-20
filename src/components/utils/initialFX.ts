@@ -1,10 +1,10 @@
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { smoother } from "../Navbar";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-export function initialFX() {
+export function initialFX(smoother: ScrollSmoother | null) {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  if (smoother) smoother.paused(false);
   document.getElementsByTagName("main")[0].classList.add("main-active");
   gsap.to("body", {
     backgroundColor: "#0a0e17",

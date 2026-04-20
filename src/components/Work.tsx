@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import "./styles/Work.css";
 import { MdArrowBack, MdArrowForward, MdClose } from "react-icons/md";
-import { smoother } from "./Navbar";
+import { useSmoother } from "../context/SmootherContext";
 
 interface Project {
   id: number;
@@ -653,17 +653,19 @@ function CaseStudyModal({
   project: Project;
   onClose: () => void;
 }) {
+  const smootherRef = useSmoother();
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleEsc);
-    if (smoother) smoother.paused(true);
+    if (smootherRef.current) smootherRef.current.paused(true);
     return () => {
       document.removeEventListener("keydown", handleEsc);
-      if (smoother) smoother.paused(false);
+      if (smootherRef.current) smootherRef.current.paused(false);
     };
-  }, [onClose]);
+  }, [onClose, smootherRef]);
 
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>

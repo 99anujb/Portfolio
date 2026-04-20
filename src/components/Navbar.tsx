@@ -1,16 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useSmoother } from "../context/SmootherContext";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
 
 const Navbar = () => {
+  const smootherRef = useSmoother();
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (window.innerWidth > 1024 && smootherRef.current) {
+        e.preventDefault();
+        const section = e.currentTarget.getAttribute("data-href");
+        if (section) {
+          smootherRef.current.scrollTo(section, true, "top top");
+        }
+      }
+    },
+    [smootherRef]
+  );
+
   useEffect(() => {
-    smoother = ScrollSmoother.create({
+    smootherRef.current = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.7,
@@ -20,25 +35,16 @@ const Navbar = () => {
       ignoreMobileResize: true,
     });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+    smootherRef.current.scrollTop(0);
+    smootherRef.current.paused(true);
 
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
-        }
-      });
-    });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
-    });
-  }, []);
+    const handleResize = () => ScrollSmoother.refresh(true);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [smootherRef]);
+
   return (
     <>
       <div className="header">
@@ -56,17 +62,17 @@ const Navbar = () => {
         </a>
         <ul>
           <li>
-            <a data-href="#about" href="#about">
+            <a data-href="#about" href="#about" onClick={handleNavClick}>
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a data-href="#work" href="#work" onClick={handleNavClick}>
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a data-href="#contact" href="#contact" onClick={handleNavClick}>
               <HoverLinks text="CONTACT" />
             </a>
           </li>
