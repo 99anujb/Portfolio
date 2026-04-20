@@ -1,6 +1,34 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/Career.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Career = () => {
+  const infoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!infoRef.current) return;
+    const boxes = infoRef.current.querySelectorAll(".career-info-box");
+    gsap.fromTo(
+      boxes,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: infoRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  }, []);
+
   return (
     <div className="career-section section-container">
       <div className="career-container">
@@ -8,7 +36,7 @@ const Career = () => {
           My career <span>&</span>
           <br /> experience
         </h2>
-        <div className="career-info">
+        <div className="career-info" ref={infoRef}>
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
