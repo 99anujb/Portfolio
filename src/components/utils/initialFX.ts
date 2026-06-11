@@ -12,7 +12,7 @@ export function initialFX(smoother: ScrollSmoother | null) {
     delay: 1,
   });
 
-  var landingText = new SplitText(
+  const landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
     {
       type: "chars,lines",
@@ -33,7 +33,7 @@ export function initialFX(smoother: ScrollSmoother | null) {
     }
   );
 
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
+  const TextProps = { type: "chars,lines", linesClass: "split-h2" };
 
   // Teal text
   gsap.fromTo(
