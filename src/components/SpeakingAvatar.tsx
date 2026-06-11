@@ -12,18 +12,22 @@ const INTRO_TEXT =
 const SpeakingAvatar = () => {
   const [speaking, setSpeaking] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const stop = useCallback(() => {
-    window.speechSynthesis.cancel();
+    audioRef.current?.pause();
+    window.speechSynthesis?.cancel();
     setSpeaking(false);
     setShowBubble(false);
   }, []);
 
-  const speak = useCallback(() => {
-    if (!("speechSynthesis" in window)) return;
+  const speakWithSynthesis = useCallback(() => {
+    if (!("speechSynthesis" in window)) {
+      setSpeaking(false);
+      setShowBubble(false);
+      return;
+    }
     window.speechSynthesis.cancel();
-
     const utterance = new SpeechSynthesisUtterance(INTRO_TEXT);
     const voices = window.speechSynthesis.getVoices();
     const preferred =
@@ -31,8 +35,6 @@ const SpeakingAvatar = () => {
       voices.find((v) => v.lang === "en-US") ||
       null;
     if (preferred) utterance.voice = preferred;
-    utterance.rate = 1;
-    utterance.pitch = 1;
     utterance.onend = () => {
       setSpeaking(false);
       setShowBubble(false);
@@ -41,11 +43,31 @@ const SpeakingAvatar = () => {
       setSpeaking(false);
       setShowBubble(false);
     };
-    utteranceRef.current = utterance;
     window.speechSynthesis.speak(utterance);
     setSpeaking(true);
     setShowBubble(true);
   }, []);
+
+  const speak = useCallback(() => {
+    // Prefer the pre-generated voiceover file; fall back to browser TTS
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/intro-voice.m4a");
+      audioRef.current.preload = "auto";
+    }
+    const audio = audioRef.current;
+    audio.currentTime = 0;
+    audio.onended = () => {
+      setSpeaking(false);
+      setShowBubble(false);
+    };
+    audio
+      .play()
+      .then(() => {
+        setSpeaking(true);
+        setShowBubble(true);
+      })
+      .catch(() => speakWithSynthesis());
+  }, [speakWithSynthesis]);
 
   const toggle = useCallback(() => {
     if (speaking) stop();
@@ -53,14 +75,12 @@ const SpeakingAvatar = () => {
   }, [speaking, speak, stop]);
 
   useEffect(() => {
-    // Chrome loads voices asynchronously; warm the list
     if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
-    return () => window.speechSynthesis?.cancel();
+    return () => {
+      audioRef.current?.pause();
+      window.speechSynthesis?.cancel();
+    };
   }, []);
-
-  if (typeof window !== "undefined" && !("speechSynthesis" in window)) {
-    return null;
-  }
 
   return (
     <div className={`speaking-avatar ${speaking ? "is-speaking" : ""}`}>
