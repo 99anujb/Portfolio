@@ -15,6 +15,7 @@ interface Project {
   caseStudyHighlights: string[];
   award?: string;
   canvasVisualizationType: string;
+  imageUrl?: string;
   githubUrl?: string;
   liveUrl?: string;
 }
@@ -46,6 +47,7 @@ const projects: Project[] = [
     award:
       "3rd Place, Graduate Poster, ASEE Northeast Section Annual Conference 2026",
     canvasVisualizationType: "heatmap",
+    imageUrl: "/images/projects/afm.png",
     githubUrl: "https://github.com/99anujb/AFM-Height-Reconstruction-DL",
   },
   {
@@ -65,6 +67,7 @@ const projects: Project[] = [
       "Annotated market events — 2015–16 oil collapse, Utilities −33% in 2018 — turning charts into a stakeholder-ready narrative.",
     ],
     canvasVisualizationType: "sector-lines",
+    imageUrl: "/images/projects/sp500.png",
     githubUrl: "https://github.com/99anujb/sp500-sector-intelligence",
     liveUrl:
       "https://public.tableau.com/app/profile/anuj.bansal4965/viz/SP500SectorIntelligence2013-2018/SP500Intelligence",
@@ -146,6 +149,7 @@ const projects: Project[] = [
       "Added interactive preference-based interface letting users specify mood, tempo, danceability, era, and style.",
     ],
     canvasVisualizationType: "waveform",
+    imageUrl: "/images/projects/music.png",
     githubUrl: "https://github.com/99anujb/HybridMusicRecommender",
   },
   {
@@ -1063,10 +1067,21 @@ const Work = () => {
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
-                      <ProjectCanvas
-                        type={project.canvasVisualizationType}
-                        seed={project.id}
-                      />
+                      {project.imageUrl ? (
+                        <div className="work-image">
+                          <img
+                            className="work-real-image"
+                            src={project.imageUrl}
+                            alt={`${project.title} screenshot`}
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <ProjectCanvas
+                          type={project.canvasVisualizationType}
+                          seed={project.id}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
