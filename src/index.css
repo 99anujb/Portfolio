@@ -208,13 +208,6 @@ body::after {
   -webkit-text-fill-color: transparent;
 }
 
-.do-h2 {
-  background: linear-gradient(100deg, #5eead4 10%, #38bdf8 60%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Per-metric colors in About */
 .about-metric:nth-child(1) .about-metric-value {
   color: #5eead4;
