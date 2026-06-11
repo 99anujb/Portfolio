@@ -9,6 +9,7 @@ import ParticleField from "./ParticleField";
 import ScrollProgress from "./ScrollProgress";
 import SkillsMarquee from "./SkillsMarquee";
 import SocialIcons from "./SocialIcons";
+import SpeakingAvatar from "./SpeakingAvatar";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
@@ -40,6 +41,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <ScrollProgress />
       <Navbar />
       <SocialIcons />
+      <SpeakingAvatar />
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">

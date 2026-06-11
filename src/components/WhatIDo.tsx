@@ -70,9 +70,19 @@ const capabilities: Capability[] = [
 
 const WhatIDo = () => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    card.style.setProperty("--rx", `${(py - 0.5) * -7}deg`);
+    card.style.setProperty("--ry", `${(px - 0.5) * 7}deg`);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty("--rx", "0deg");
+    e.currentTarget.style.setProperty("--ry", "0deg");
   };
 
   return (
@@ -92,6 +102,7 @@ const WhatIDo = () => {
               className="what-content"
               key={index}
               onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
               <div className="what-content-in">
                 <div className="what-icon">
