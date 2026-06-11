@@ -59,34 +59,33 @@ a.contact-social {
   opacity: 0.5;
 }
 
-.resume-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: rgba(94, 234, 212, 0.1);
-  border: 1px solid var(--accentColor);
-  border-radius: 8px;
-  color: var(--accentColor);
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-}
-
-.resume-button:hover {
-  background: rgba(94, 234, 212, 0.2);
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.15);
-  color: var(--accentColor);
-}
-
-.resume-helper {
-  font-size: 12px;
-  color: #adacac;
-  margin-top: 8px;
-  margin-bottom: 20px;
-  line-height: 1.4;
+.availability-note {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
   max-width: 350px;
+  line-height: 1.5;
+}
+
+.availability-dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+  animation: availabilityPulse 2s ease-in-out infinite;
+}
+
+@keyframes availabilityPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 @media only screen and (max-width: 1600px) {

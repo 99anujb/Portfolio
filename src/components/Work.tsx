@@ -46,10 +46,31 @@ const projects: Project[] = [
     award:
       "3rd Place, Graduate Poster, ASEE Northeast Section Annual Conference 2026",
     canvasVisualizationType: "heatmap",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/AFM-Height-Reconstruction-DL",
   },
   {
     id: 2,
+    title: "S&P 500 Sector Intelligence",
+    category: "Business Intelligence / Tableau",
+    domainTags: ["Business Analytics", "Data Visualization", "Finance"],
+    tools: ["Tableau", "Python", "Bash", "Data Storytelling"],
+    status: "Completed",
+    shortDescription:
+      "Interactive Tableau dashboard answering where $1 invested in the S&P 500 in 2013 went by 2018 — 619K daily records across 11 GICS sectors, published live on Tableau Public.",
+    caseStudyHighlights: [
+      "Processed 619K daily price and volume records (2013–2018) across all 11 GICS sectors with a custom ticker-to-sector mapping.",
+      "Built a Python ticker scraper and Bash merge pipeline combining 500+ individual stock files.",
+      "Designed 4 KPI tiles plus performance index line chart, annual heatmap, risk-vs-return scatter, and volume-by-sector views.",
+      "Surfaced headline insights: Communication Services +138% (FAANG breakout), Energy −1.5% with highest volatility (2.71% daily).",
+      "Annotated market events — 2015–16 oil collapse, Utilities −33% in 2018 — turning charts into a stakeholder-ready narrative.",
+    ],
+    canvasVisualizationType: "sector-lines",
+    githubUrl: "https://github.com/99anujb/sp500-sector-intelligence",
+    liveUrl:
+      "https://public.tableau.com/app/profile/anuj.bansal4965/viz/SP500SectorIntelligence2013-2018/SP500Intelligence",
+  },
+  {
+    id: 3,
     title: "ChurnShield AI",
     category: "Machine Learning / Business Analytics",
     domainTags: ["Machine Learning", "Business Analytics", "Data Science"],
@@ -74,10 +95,10 @@ const projects: Project[] = [
       "Deployed a production Streamlit + Plotly dashboard with 3D scatter plots, radar charts, and survival curves.",
     ],
     canvasVisualizationType: "bar-chart",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/customer-churn-prediction",
   },
   {
-    id: 3,
+    id: 4,
     title: "Stock Price Prediction Dashboard",
     category: "Machine Learning / FinTech",
     domainTags: ["Machine Learning", "Finance", "Data Science"],
@@ -100,10 +121,10 @@ const projects: Project[] = [
       "Deployed Streamlit dashboard with candlestick charts, SMA overlays, RSI gauges, and backtest visualizations.",
     ],
     canvasVisualizationType: "candlestick",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/stocksense",
   },
   {
-    id: 4,
+    id: 5,
     title: "Hybrid Music Recommendation System",
     category: "Machine Learning / Recommendation Systems",
     domainTags: ["Machine Learning", "Data Science"],
@@ -125,10 +146,10 @@ const projects: Project[] = [
       "Added interactive preference-based interface letting users specify mood, tempo, danceability, era, and style.",
     ],
     canvasVisualizationType: "waveform",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/HybridMusicRecommender",
   },
   {
-    id: 5,
+    id: 6,
     title: "Zomato Restaurant Rating Prediction",
     category: "Machine Learning / Deployment",
     domainTags: ["Machine Learning", "Business Analytics", "Data Science"],
@@ -144,10 +165,10 @@ const projects: Project[] = [
       "Included full design documentation (HLD, LLD, Architecture, Wireframes).",
     ],
     canvasVisualizationType: "distribution",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/zomato-rating-predictor",
   },
   {
-    id: 6,
+    id: 7,
     title: "Sustainable Fashion Visual Analytics",
     category: "Data Visualization / Interactive Dashboards",
     domainTags: ["Data Visualization"],
@@ -164,10 +185,10 @@ const projects: Project[] = [
       "Built with zero build tools \u2014 pure D3 v7, TopoJSON v3, and vanilla JavaScript.",
     ],
     canvasVisualizationType: "bubble-chart",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/sustainable-fashion-viz",
   },
   {
-    id: 7,
+    id: 8,
     title: "Interactive Document Visualization Tool",
     category: "Data Visualization / Web Application",
     domainTags: ["Data Visualization"],
@@ -189,10 +210,10 @@ const projects: Project[] = [
       "Loaded JSON data via d3.json() and rendered via D3 data binding (selectAll \u2192 data \u2192 enter \u2192 append).",
     ],
     canvasVisualizationType: "document-grid",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/declassified-docs-explorer",
   },
   {
-    id: 8,
+    id: 9,
     title: "Disease Risk Prediction",
     category: "Healthcare / Predictive Analytics",
     domainTags: ["Machine Learning", "Healthcare", "Data Science"],
@@ -206,13 +227,31 @@ const projects: Project[] = [
       "Multi-disease prediction capability.",
     ],
     canvasVisualizationType: "scatter-boundary",
-    githubUrl: "https://github.com/99anujb",
+    githubUrl: "https://github.com/99anujb/Healthcare-Disease-Risk-Prediction",
   },
   {
-    id: 9,
+    id: 10,
+    title: "LinkedIn Auto-Post Agent",
+    category: "AI Agents / Automation",
+    domainTags: ["AI Agents", "Data Science"],
+    tools: ["Claude API", "Python", "GitHub Actions", "Gmail API"],
+    status: "Completed",
+    shortDescription:
+      "Autonomous content agent that drafts a daily LinkedIn post with Claude, attaches imagery, and emails it for one-tap publishing — fully automated via GitHub Actions cron.",
+    caseStudyHighlights: [
+      "Claude-powered drafting pipeline with rotating post types grounded in a master profile JSON.",
+      "Zero-server deployment: GitHub Actions cron (12:00 UTC daily) with secrets-based configuration.",
+      "Gmail delivery loop with draft-tracking database and CLI commands (draft, list-pending, dry-run, force).",
+      "Unsplash API integration for automatic post imagery.",
+    ],
+    canvasVisualizationType: "agent-pipeline",
+    githubUrl: "https://github.com/99anujb/linkedin-agent",
+  },
+  {
+    id: 11,
     title: "Research Paper Summarizer & Job Match Agent",
     category: "AI Agents / NLP",
-    domainTags: ["Machine Learning", "Data Science"],
+    domainTags: ["AI Agents", "Machine Learning", "Data Science"],
     tools: ["LangChain", "OpenAI API", "Streamlit", "Python"],
     status: "In Progress",
     shortDescription:
@@ -226,7 +265,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/99anujb",
   },
   {
-    id: 10,
+    id: 12,
     title: "Financial Fraud Detection",
     category: "Anomaly Detection / Finance",
     domainTags: ["Deep Learning", "Finance"],
@@ -251,11 +290,16 @@ const filterTags = [
   "Business Analytics",
   "Data Visualization",
   "Deep Learning",
+  "AI Agents",
   "Finance",
   "Healthcare",
 ];
 
-function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
+function generateProjectImage(
+  type: string,
+  seedIdx: number,
+  canvas: HTMLCanvasElement
+) {
   const ctx = canvas.getContext("2d")!;
   const w = canvas.width;
   const h = canvas.height;
@@ -284,12 +328,12 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
   const purple = "#a78bfa";
   const blue = "#38bdf8";
   const pink = "#f472b6";
-  const seed = index * 1337;
+  const seed = seedIdx * 1337;
   const rng = (i: number) =>
     ((Math.sin(seed + i * 9301 + 49297) * 49297) % 1 + 1) % 1;
 
-  switch (index) {
-    case 0: {
+  switch (type) {
+    case "heatmap": {
       // AFM Z-Height Map - Heatmap
       const cols = 16,
         rows = 12;
@@ -308,7 +352,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("Z-Height Map", 30, h - 10);
       break;
     }
-    case 1: {
+    case "bar-chart": {
       // ChurnShield AI - Bar chart
       const bars = [0.85, 0.76, 0.72, 0.68, 0.88, 0.71, 0.45, 0.82];
       const labels = ["AUC", "Rec", "Prec", "F1", "Spec", "Acc", "FPR", "MCC"];
@@ -331,7 +375,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("0.8493 ROC-AUC", 40, 30);
       break;
     }
-    case 2: {
+    case "candlestick": {
       // Stock Price Prediction - Candlestick chart
       const candles = 14;
       const candleW = (w - 80) / candles;
@@ -376,7 +420,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("AAPL +2.3%", 40, 25);
       break;
     }
-    case 3: {
+    case "waveform": {
       // Hybrid Music Recommendation - Waveform + nodes
       const centerY = h / 2;
       for (let x = 30; x < w - 30; x += 3) {
@@ -428,7 +472,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("93K Tracks", 30, 25);
       break;
     }
-    case 4: {
+    case "distribution": {
       // Zomato Rating - Distribution curve
       ctx.beginPath();
       ctx.moveTo(40, h - 60);
@@ -458,7 +502,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("71.7K Records", 40, 40);
       break;
     }
-    case 5: {
+    case "bubble-chart": {
       // Sustainable Fashion - Bubble chart
       const bubbles = Array.from({ length: 20 }, (_, i) => ({
         x: 50 + rng(i) * (w - 100),
@@ -482,7 +526,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.globalAlpha = 1;
       break;
     }
-    case 6: {
+    case "document-grid": {
       // Interactive Document Visualization - Document grid
       const cols = 6,
         rows = 4;
@@ -521,7 +565,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("111 Documents \u00b7 5 Agencies", 30, h - 10);
       break;
     }
-    case 7: {
+    case "scatter-boundary": {
       // Disease Risk Prediction - Scatter with decision boundary
       ctx.strokeStyle = "rgba(244, 114, 182, 0.3)";
       ctx.lineWidth = 2;
@@ -529,7 +573,8 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.beginPath();
       for (let x = 0; x < w; x += 5) {
         const y = h / 2 + Math.sin(x / 80) * 60 - 20;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
       }
       ctx.stroke();
       ctx.setLineDash([]);
@@ -549,7 +594,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("Risk Classification", 30, 25);
       break;
     }
-    case 8: {
+    case "network-flow": {
       // Research Paper Summarizer - Network/flow diagram
       const flowNodes = [
         { x: 80, y: h / 2, label: "PDF", color: blue },
@@ -595,7 +640,7 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.textAlign = "left";
       break;
     }
-    case 9: {
+    case "anomaly-scatter": {
       // Financial Fraud Detection - Anomaly scatter
       for (let i = 0; i < 100; i++) {
         const x = 40 + rng(i) * (w - 80);
@@ -623,6 +668,97 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
       ctx.fillText("\u25cf Anomalies Detected", 30, 25);
       break;
     }
+    case "sector-lines": {
+      // S&P 500 Sector Intelligence - Diverging sector performance lines
+      ctx.strokeStyle = "rgba(255,255,255,0.1)";
+      ctx.lineWidth = 1;
+      [0.25, 0.5, 0.75].forEach((g) => {
+        ctx.beginPath();
+        ctx.moveTo(40, h * g);
+        ctx.lineTo(w - 30, h * g);
+        ctx.stroke();
+      });
+      const yStart = h * 0.62;
+      const series = [
+        { endY: 0.16, color: teal },
+        { endY: 0.3, color: blue },
+        { endY: 0.42, color: purple },
+        { endY: 0.52, color: orange },
+        { endY: 0.78, color: "#ef4444" },
+      ];
+      series.forEach((s, si) => {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = si === 0 ? 2.5 : 1.5;
+        ctx.globalAlpha = si === 0 ? 1 : 0.7;
+        ctx.beginPath();
+        const steps = 36;
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          const x = 40 + t * (w - 70);
+          const y =
+            yStart +
+            (h * s.endY - yStart) * t +
+            (rng(si * steps + i) - 0.5) * 18 * Math.sin(t * Math.PI);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      });
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = teal;
+      ctx.font = "bold 13px Arial";
+      ctx.fillText("Comm Services +138%", 40, 25);
+      ctx.fillStyle = "#ef4444";
+      ctx.fillText("Energy \u22121.5%", w - 140, h - 15);
+      break;
+    }
+    case "agent-pipeline": {
+      // LinkedIn Auto-Post Agent - Automation pipeline
+      const stages = [
+        { label: "Cron", color: blue },
+        { label: "Claude", color: purple },
+        { label: "Draft", color: teal },
+        { label: "Email", color: orange },
+        { label: "Post", color: pink },
+      ];
+      const y = h / 2;
+      const gap = (w - 120) / (stages.length - 1);
+      ctx.strokeStyle = "rgba(255,255,255,0.2)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(60, y);
+      ctx.lineTo(w - 60, y);
+      ctx.stroke();
+      stages.forEach((s, i) => {
+        const x = 60 + i * gap;
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = 0.2;
+        ctx.beginPath();
+        ctx.arc(x, y, 26, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, 26, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 11px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(s.label, x, y + 4);
+      });
+      ctx.textAlign = "left";
+      for (let i = 0; i < 14; i++) {
+        ctx.fillStyle = i < 11 ? teal : "rgba(255,255,255,0.15)";
+        ctx.beginPath();
+        ctx.arc(50 + i * ((w - 100) / 13), h - 35, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = "rgba(94, 234, 212, 0.8)";
+      ctx.font = "bold 12px Arial";
+      ctx.fillText("Daily @ 12:00 UTC", 50, h - 50);
+      break;
+    }
   }
 
   // Border glow
@@ -631,16 +767,16 @@ function generateProjectImage(index: number, canvas: HTMLCanvasElement) {
   ctx.strokeRect(0, 0, w, h);
 }
 
-function ProjectCanvas({ visualizationIndex }: { visualizationIndex: number }) {
+function ProjectCanvas({ type, seed }: { type: string; seed: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (canvasRef.current) {
       canvasRef.current.width = 500;
       canvasRef.current.height = 300;
-      generateProjectImage(visualizationIndex, canvasRef.current);
+      generateProjectImage(type, seed, canvasRef.current);
     }
-  }, [visualizationIndex]);
+  }, [type, seed]);
 
   return (
     <div className="work-image">
@@ -927,7 +1063,10 @@ const Work = () => {
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
-                      <ProjectCanvas visualizationIndex={project.id - 1} />
+                      <ProjectCanvas
+                        type={project.canvasVisualizationType}
+                        seed={project.id}
+                      />
                     </div>
                   </div>
                 </div>

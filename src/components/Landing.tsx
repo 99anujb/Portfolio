@@ -38,6 +38,10 @@ const Landing = ({ children }: PropsWithChildren) => {
               <div className="landing-h2-2">Business Analyst</div>
               <div className="landing-h2-3">Data Analyst</div>
             </h2>
+            <div className="landing-status">
+              <span className="landing-status-dot" aria-hidden="true" />
+              <span>Open to Work — Data & Analytics Roles</span>
+            </div>
             <div className="landing-award">
               <span>3rd Place, Graduate Poster — ASEE NE 2026</span>
             </div>
