@@ -674,21 +674,3 @@
   border-color: transparent;
   color: #06121c;
 }
-
-/* Real project screenshots */
-.work-real-image {
-  width: 100%;
-  max-width: 450px;
-  aspect-ratio: 5 / 3;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 8px;
-  border: 1px solid rgba(94, 234, 212, 0.2);
-  background: #fff;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.carousel-content:hover .work-real-image {
-  transform: scale(1.04);
-  box-shadow: 0 8px 40px rgba(94, 234, 212, 0.12);
-}
