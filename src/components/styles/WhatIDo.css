@@ -302,3 +302,50 @@
   border-color: rgba(94, 234, 212, 0.35);
   box-shadow: 0 0 30px rgba(94, 234, 212, 0.07);
 }
+
+/* Per-card accent colors */
+.what-content:nth-child(1) {
+  --cardAccent: #5eead4;
+}
+
+.what-content:nth-child(2) {
+  --cardAccent: #38bdf8;
+}
+
+.what-content:nth-child(3) {
+  --cardAccent: #a78bfa;
+}
+
+.what-content:nth-child(4) {
+  --cardAccent: #f97316;
+}
+
+.what-content:nth-child(5) {
+  --cardAccent: #fbbf24;
+}
+
+.what-content:nth-child(6) {
+  --cardAccent: #f472b6;
+}
+
+.what-icon {
+  color: var(--cardAccent, var(--accentColor));
+}
+
+.what-content::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--cardAccent, #5eead4) 13%, transparent),
+    transparent 65%
+  );
+}
+
+.what-content:hover {
+  border-color: color-mix(in srgb, var(--cardAccent, #5eead4) 45%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--cardAccent, #5eead4) 10%, transparent);
+}
+
+.what-content-in h4 {
+  color: var(--cardAccent, var(--accentColor));
+  opacity: 0.7;
+}

@@ -658,3 +658,12 @@
   transform: scale(1.04);
   box-shadow: 0 8px 40px rgba(94, 234, 212, 0.12);
 }
+
+/* Gradient slide numbers */
+.carousel-number h3 {
+  background: linear-gradient(135deg, #5eead4, #38bdf8 55%, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.55;
+}

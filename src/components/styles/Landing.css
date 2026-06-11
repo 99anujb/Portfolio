@@ -312,15 +312,19 @@ h2.landing-info-h2 {
 .landing-award span {
   display: inline-block;
   padding: 6px 16px;
-  border: 1px solid var(--accentColor);
+  border: 1px solid rgba(251, 191, 36, 0.7);
   border-radius: 20px;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.5px;
-  color: var(--accentColor);
-  background: rgba(94, 234, 212, 0.08);
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
   font-family: "Geist", sans-serif;
   white-space: nowrap;
+}
+
+.landing-award span::before {
+  content: "🏆 ";
 }
 
 .landing-info-h2::after {

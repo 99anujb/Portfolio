@@ -1,6 +1,7 @@
 import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
 import About from "./About";
 import Career from "./Career";
+import ColorJourney from "./ColorJourney";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
 import GitHubStats from "./GitHubStats";
@@ -40,6 +41,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     <div className="container-main">
       <a href="#about" className="skip-nav">Skip to content</a>
       <Cursor />
+      <ColorJourney />
       <ParticleField />
       <ScrollProgress />
       <Navbar />
