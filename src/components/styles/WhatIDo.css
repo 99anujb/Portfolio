@@ -21,11 +21,17 @@
   z-index: 9;
 }
 
-/* Desktop: character parks left of center (GSAP x -20%), so give the
-   title the left 40% and push cards into the clear right 46% */
+/* Desktop: character parks left of center (GSAP x -20%), so pin the
+   title to the far left and push cards into the clear right 46% */
 @media only screen and (min-width: 1025px) {
   .what-box:first-child {
     width: 40%;
+    justify-content: flex-start;
+  }
+
+  .what-box:first-child h2 {
+    margin-right: 0;
+    margin-left: 2%;
   }
 
   .what-box:last-child {
