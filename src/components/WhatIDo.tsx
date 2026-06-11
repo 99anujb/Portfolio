@@ -69,6 +69,12 @@ const capabilities: Capability[] = [
 ];
 
 const WhatIDo = () => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -82,7 +88,11 @@ const WhatIDo = () => {
       <div className="what-box">
         <div className="what-box-in">
           {capabilities.map((cap, index) => (
-            <div className="what-content" key={index}>
+            <div
+              className="what-content"
+              key={index}
+              onMouseMove={handleMouseMove}
+            >
               <div className="what-content-in">
                 <div className="what-icon">
                   <cap.icon />

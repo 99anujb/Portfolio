@@ -5,6 +5,8 @@ import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
+import ScrollProgress from "./ScrollProgress";
+import SkillsMarquee from "./SkillsMarquee";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
@@ -33,6 +35,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     <div className="container-main">
       <a href="#about" className="skip-nav">Skip to content</a>
       <Cursor />
+      <ScrollProgress />
       <Navbar />
       <SocialIcons />
       {isDesktopView && children}
@@ -41,6 +44,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
           <div className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
             <About />
+            <SkillsMarquee />
             <WhatIDo />
             <Career />
             <Work />

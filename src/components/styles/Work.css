@@ -648,3 +648,13 @@
   background: rgba(94, 234, 212, 0.12);
   border-color: var(--accentColor);
 }
+
+/* Project canvas hover zoom */
+.work-image canvas {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.carousel-content:hover .work-image canvas {
+  transform: scale(1.04);
+  box-shadow: 0 8px 40px rgba(94, 234, 212, 0.12);
+}

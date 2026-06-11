@@ -453,6 +453,8 @@ h2.landing-info-h2 {
 
 .landing-cta {
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   margin-top: 28px;
   padding: 12px 32px;
   border: 1px solid var(--accentColor);
@@ -470,4 +472,27 @@ h2.landing-info-h2 {
 .landing-cta:hover {
   background: rgba(94, 234, 212, 0.12);
   box-shadow: 0 0 20px rgba(94, 234, 212, 0.15);
+}
+
+.landing-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(94, 234, 212, 0.25),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+}
+
+.landing-cta:hover::before {
+  animation: ctaSweep 0.7s ease forwards;
+}
+
+@keyframes ctaSweep {
+  to {
+    transform: translateX(100%);
+  }
 }

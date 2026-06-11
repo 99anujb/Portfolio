@@ -254,3 +254,33 @@
     line-height: 6.8rem;
   }
 }
+
+/* Spotlight hover effect */
+.what-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(94, 234, 212, 0.1),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.what-content:hover::before {
+  opacity: 1;
+}
+
+.what-content {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.what-content:hover {
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 0 30px rgba(94, 234, 212, 0.07);
+}
