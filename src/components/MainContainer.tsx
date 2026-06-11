@@ -3,13 +3,16 @@ import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
+import GitHubStats from "./GitHubStats";
 import Landing from "./Landing";
+import Playground from "./Playground";
 import Navbar from "./Navbar";
 import ParticleField from "./ParticleField";
 import ScrollProgress from "./ScrollProgress";
 import SkillsMarquee from "./SkillsMarquee";
 import SocialIcons from "./SocialIcons";
 import SpeakingAvatar from "./SpeakingAvatar";
+import SqlConsole from "./SqlConsole";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
@@ -42,6 +45,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Navbar />
       <SocialIcons />
       <SpeakingAvatar />
+      <SqlConsole />
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">
@@ -52,6 +56,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <WhatIDo />
             <Career />
             <Work />
+            <Playground />
+            <GitHubStats />
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />

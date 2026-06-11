@@ -30,12 +30,19 @@ src/
 ├── types/
 │   └── gsap-splittext.d.ts     # GSAP SplitText type definitions
 └── components/
-    ├── Landing.tsx              # Hero section (name + role cycling)
-    ├── About.tsx                # About me section
-    ├── WhatIDo.tsx              # Skills cards (Data Science & ML / Analytics & Viz)
+    ├── Landing.tsx              # Hero section (name + role cycling, open-to-work badge)
+    ├── About.tsx                # About me section (count-up metrics)
+    ├── WhatIDo.tsx              # Skills cards (spotlight + 3D tilt hover)
     ├── TechStack.tsx            # 3D physics tech spheres (R3F + Rapier)
     ├── Career.tsx               # Career timeline
-    ├── Work.tsx                 # Project carousel (8 projects)
+    ├── Work.tsx                 # Project carousel (12 projects, type-keyed canvas art)
+    ├── Playground.tsx           # Interactive churn mini-dashboard (live filters/KPIs/SVG charts)
+    ├── GitHubStats.tsx          # Live GitHub API stats + contribution calendar
+    ├── SqlConsole.tsx           # In-browser SQLite console (sql.js CDN) over project data
+    ├── SpeakingAvatar.tsx       # AJ-Bot: chat panel (/api/chat + local fallback) + voice intro
+    ├── ScrollProgress.tsx       # Gradient scroll progress bar
+    ├── SkillsMarquee.tsx        # Neon tilted skills ticker
+    ├── ParticleField.tsx        # Mouse-reactive particle constellation background
     ├── Contact.tsx              # Contact + footer
     ├── Navbar.tsx               # Navigation (uses GSAP ScrollSmoother)
     ├── Cursor.tsx               # Custom cursor
@@ -62,6 +69,10 @@ src/
         ├── Work.css, WhatIDo.css, Navbar.css, Cursor.css
         ├── Loading.css, SocialIcons.css, style.css
 ```
+
+## Serverless
+
+- `api/chat.ts` — Vercel function for the Ask-AJ chatbot (Anthropic SDK, `claude-opus-4-8`). Requires `ANTHROPIC_API_KEY` env var in Vercel; client falls back to keyword answers from `src/data/knowledge.ts` when absent.
 
 ## Key Dependencies
 
