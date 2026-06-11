@@ -58,14 +58,19 @@ export function initialFX(smoother: ScrollSmoother | null) {
     }
   );
 
-  var tealText1 = new SplitText(".landing-h2-1", TextProps);
-  var tealText2 = new SplitText(".landing-h2-2", TextProps);
-  var tealText3 = new SplitText(".landing-h2-3", TextProps);
-  var tealText4 = new SplitText(".landing-h2-4", TextProps);
-  var tealText5 = new SplitText(".landing-h2-5", TextProps);
-  var tealText6 = new SplitText(".landing-h2-6", TextProps);
+  const roleSelectors = [
+    ".landing-h2-1",
+    ".landing-h2-2",
+    ".landing-h2-3",
+    ".landing-h2-4",
+    ".landing-h2-5",
+    ".landing-h2-6",
+  ];
+  const roleTexts = roleSelectors
+    .filter((sel) => document.querySelector(sel))
+    .map((sel) => new SplitText(sel, TextProps));
 
-  LoopTexts([tealText1, tealText2, tealText3, tealText4, tealText5, tealText6]);
+  LoopTexts(roleTexts);
 }
 
 function LoopTexts(texts: SplitText[]) {

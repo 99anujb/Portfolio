@@ -417,9 +417,10 @@ h2.landing-info-h2 {
     left: 66%;
   }
 
+  /* Sized so the longest role ("Business Analyst") fits the right column */
   h2.landing-info-h2 {
-    font-size: 55px;
-    line-height: 64px;
+    font-size: clamp(30px, 3.1vw, 64px);
+    line-height: 1.18;
   }
 }
 
@@ -438,7 +439,7 @@ h2.landing-info-h2 {
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 70%;
+    left: 67%;
   }
 }
 
@@ -462,8 +463,8 @@ h2.landing-info-h2 {
   }
 
   h2.landing-info-h2 {
-    font-size: 75px;
-    line-height: 86px;
+    font-size: clamp(48px, 3.1vw, 64px);
+    line-height: 1.18;
   }
 }
 

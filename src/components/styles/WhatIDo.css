@@ -12,6 +12,14 @@
   z-index: 9;
 }
 
+/* Above the fixed 3D character (z-index 11) so card text never hides.
+   z-index on .what-box alone is trapped inside this stacking context. */
+@media only screen and (min-width: 1025px) {
+  .whatIDO {
+    z-index: 12;
+  }
+}
+
 .what-box {
   width: 50%;
   display: flex;
@@ -20,12 +28,6 @@
   z-index: 9;
 }
 
-/* Cards render above the fixed 3D character (z-index 11) so text never hides */
-@media only screen and (min-width: 1025px) {
-  .what-box:last-child {
-    z-index: 12;
-  }
-}
 
 .what-box h2 {
   font-size: calc(4vw + 25px);
