@@ -1,29 +1,33 @@
 .skills-marquee {
   position: relative;
-  z-index: 2;
-  padding: 28px 0;
+  z-index: 13;
+  padding: 30px 0;
   margin: 60px 0;
-  border-top: 1px solid rgba(94, 234, 212, 0.12);
-  border-bottom: 1px solid rgba(94, 234, 212, 0.12);
-  background: rgba(94, 234, 212, 0.02);
+  border-top: 1px solid rgba(94, 234, 212, 0.18);
+  border-bottom: 1px solid rgba(94, 234, 212, 0.18);
+  background: rgba(10, 14, 23, 0.75);
+  backdrop-filter: blur(6px);
   transform: rotate(-1.2deg) scale(1.02);
+  box-shadow: 0 0 40px rgba(94, 234, 212, 0.06);
 }
 
 .marquee-item {
   display: inline-flex;
   align-items: center;
   font-family: "Geist", sans-serif;
-  font-size: 44px;
+  font-size: 54px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #eae5ec;
+  text-shadow: 0 0 22px rgba(94, 234, 212, 0.25);
   white-space: nowrap;
 }
 
 .marquee-outline {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(94, 234, 212, 0.6);
+  text-shadow: none;
+  -webkit-text-stroke: 1px rgba(94, 234, 212, 0.65);
 }
 
 .marquee-star {
@@ -36,7 +40,7 @@
 
 @media screen and (max-width: 768px) {
   .marquee-item {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .marquee-star {

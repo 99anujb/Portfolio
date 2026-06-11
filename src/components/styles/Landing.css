@@ -192,6 +192,22 @@
   font-family: "Geist", sans-serif;
 }
 
+.landing-intro h1 span {
+  color: var(--accentColor);
+  animation: nameGlow 3s ease-in-out infinite;
+}
+
+@keyframes nameGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 16px rgba(94, 234, 212, 0.25);
+  }
+
+  50% {
+    text-shadow: 0 0 34px rgba(94, 234, 212, 0.65);
+  }
+}
+
 /* .landing-intro h1 span {
    font-weight: 200; 
 } */

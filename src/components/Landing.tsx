@@ -15,6 +15,24 @@ const Landing = ({ children }: PropsWithChildren) => {
     [smootherRef]
   );
 
+  const handleMagnet = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      const el = e.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.35}px)`;
+    },
+    []
+  );
+
+  const resetMagnet = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.currentTarget.style.transform = "";
+    },
+    []
+  );
+
   return (
     <>
       <div className="landing-section" id="landingDiv">
@@ -49,6 +67,8 @@ const Landing = ({ children }: PropsWithChildren) => {
               href="#work"
               className="landing-cta"
               onClick={handleCTA}
+              onMouseMove={handleMagnet}
+              onMouseLeave={resetMagnet}
               data-cursor="disable"
             >
               View My Work ↓

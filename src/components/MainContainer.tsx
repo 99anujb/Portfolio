@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
+import ParticleField from "./ParticleField";
 import ScrollProgress from "./ScrollProgress";
 import SkillsMarquee from "./SkillsMarquee";
 import SocialIcons from "./SocialIcons";
@@ -35,6 +36,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     <div className="container-main">
       <a href="#about" className="skip-nav">Skip to content</a>
       <Cursor />
+      <ParticleField />
       <ScrollProgress />
       <Navbar />
       <SocialIcons />
