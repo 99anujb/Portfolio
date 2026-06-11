@@ -3,7 +3,7 @@
 
 export const PROFILE_SUMMARY = `
 Anuj Bansal — Data Scientist & Analyst.
-Education: MS Data Science at UMass Dartmouth (2024–present, GPA 3.6); B.Tech Mechanical Engineering, Punjab Technical University (2016–2020).
+Education: MS Data Science, UMass Dartmouth — completed May 2026, GPA 3.6; B.Tech Mechanical Engineering, Punjab Technical University (2016–2020).
 Experience: 4+ years. ML Researcher on AFM Z-Height reconstruction (now); Business Development in EdTech (2020–23) building lead-scoring models and A/B tests.
 Award: 3rd Place, Graduate Poster Competition, ASEE Northeast Section Annual Conference 2026.
 Currently open to Data Analyst, Business Analyst, and Data Scientist roles. Available immediately. Location: Boston / New York / Texas / Remote.
@@ -97,7 +97,7 @@ export function localAnswer(question: string): string {
     return "You can reach Anuj at 99anujbansal@gmail.com, on LinkedIn (linkedin.com/in/anuj-bansal-854772189), or through the contact form below. He's open to Data Analyst, Business Analyst, and Data Scientist roles — available immediately.";
   }
   if (/education|degree|school|university|study/.test(q)) {
-    return "Anuj is completing an MS in Data Science at UMass Dartmouth (2024–present, GPA 3.6) and holds a B.Tech in Mechanical Engineering from Punjab Technical University (2016–2020).";
+    return "Anuj completed his MS in Data Science at UMass Dartmouth in May 2026 (GPA 3.6) and holds a B.Tech in Mechanical Engineering from Punjab Technical University (2016–2020).";
   }
   if (/experience|work|job|career|background/.test(q)) {
     return "4+ years of experience: currently an ML Researcher on AFM Z-height reconstruction (award-winning deep learning research), previously Business Development in EdTech (2020–23) where he built lead-scoring models and ran A/B tests.";

@@ -59,11 +59,11 @@ const Career = () => {
                 <h4>MS Data Science</h4>
                 <h5>UMass Dartmouth</h5>
               </div>
-              <h3>2024</h3>
+              <h3>2024–26</h3>
             </div>
             <p>
-              Deep diving into machine learning, deep learning, and the
-              mathematics behind intelligent systems. GPA: 3.6
+              Completed May 2026 with a 3.6 GPA — machine learning, deep
+              learning, and the mathematics behind intelligent systems.
             </p>
           </div>
           <div className="career-info-box">

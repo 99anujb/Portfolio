@@ -97,4 +97,4 @@ src/
 - GitHub: github.com/99anujb
 - LinkedIn: linkedin.com/in/anuj-bansal-854772189
 - Location: Boston / New York / Texas / Remote
-- Education: MS Data Science @ UMass Dartmouth (2024–Present), B.Tech Mech Eng @ PTU (2016–2020)
+- Education: MS Data Science @ UMass Dartmouth (2024–May 2026, completed), B.Tech Mech Eng @ PTU (2016–2020)

@@ -47,7 +47,7 @@ const Contact = () => {
               </a>
             </p>
             <h4>Education</h4>
-            <p>MS Data Science, UMass Dartmouth — 2024–Present (GPA: 3.6)</p>
+            <p>MS Data Science, UMass Dartmouth — Completed May 2026 (GPA: 3.6)</p>
             <p>B.Tech Mechanical Engineering, Punjab Technical University — 2016–2020</p>
             <h4>Location</h4>
             <p>Boston · New York · Texas · Remote</p>
