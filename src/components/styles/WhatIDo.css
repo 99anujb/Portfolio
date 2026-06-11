@@ -29,9 +29,13 @@
     justify-content: flex-start;
   }
 
+  /* Sized to fit the ~16% strip left of the parked 3D character */
   .what-box:first-child h2 {
     margin-right: 0;
     margin-left: 2%;
+    font-size: calc(2vw + 18px);
+    line-height: calc(2vw + 18px);
+    margin-bottom: 60px;
   }
 
   .what-box:last-child {
