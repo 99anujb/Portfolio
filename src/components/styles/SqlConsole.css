@@ -1,7 +1,8 @@
+/* Sits above the fixed social icons column (GitHub/LinkedIn, bottom-left) */
 .sql-trigger {
   position: fixed;
   left: 24px;
-  bottom: 24px;
+  bottom: 170px;
   z-index: 50;
   display: inline-flex;
   align-items: center;
@@ -254,7 +255,7 @@
 @media only screen and (max-width: 768px) {
   .sql-trigger {
     left: 14px;
-    bottom: 14px;
+    bottom: 110px;
     padding: 9px 12px;
   }
 
