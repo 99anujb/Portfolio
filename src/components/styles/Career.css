@@ -90,8 +90,9 @@
   width: 3px;
   height: 100%;
   background-image: linear-gradient(to top,
-      #14b8a6 20%,
-      var(--accentColor) 50%,
+      #a78bfa 5%,
+      #38bdf8 35%,
+      var(--accentColor) 65%,
       transparent 95%);
   max-height: 0%;
 }
@@ -241,4 +242,20 @@
     place-items: inherit;
     justify-content: left;
   }
+}
+/* Per-milestone year colors */
+.career-info-box:nth-child(2) .career-info-in h3 {
+  color: #5eead4;
+}
+
+.career-info-box:nth-child(3) .career-info-in h3 {
+  color: #38bdf8;
+}
+
+.career-info-box:nth-child(4) .career-info-in h3 {
+  color: #a78bfa;
+}
+
+.career-info-box:nth-child(5) .career-info-in h3 {
+  color: #f472b6;
 }

@@ -667,3 +667,10 @@
   -webkit-text-fill-color: transparent;
   opacity: 0.55;
 }
+
+/* Punchier active filter pill */
+.filter-tag-active {
+  background: linear-gradient(100deg, #5eead4, #38bdf8);
+  border-color: transparent;
+  color: #06121c;
+}

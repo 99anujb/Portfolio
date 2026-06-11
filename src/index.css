@@ -231,3 +231,12 @@ body::after {
 .about-metric:nth-child(4) .about-metric-value {
   color: #fbbf24;
 }
+
+/* Gradient on remaining big headings (not SplitText targets) */
+.techstack h2,
+.contact-section h3 {
+  background: linear-gradient(100deg, #5eead4 0%, #38bdf8 45%, #a78bfa 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
